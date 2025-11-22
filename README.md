@@ -13,7 +13,7 @@ It includes:
 - Detection of brute-force and suspicious activities
 
 This project is part of my cybersecurity hands-on portfolio.
-
+```text
 +-------------------------+
 |     Windows Agent       |
 |  (Log Collection, FIM)  |
@@ -27,7 +27,7 @@ This project is part of my cybersecurity hands-on portfolio.
              |
              v
 +-------------------------+
-|     Filebeat            |
+|        Filebeat         |
 | (Forward logs to index) |
 +------------+------------+
              |
@@ -40,6 +40,5 @@ This project is part of my cybersecurity hands-on portfolio.
              v
 +-------------------------+
 |    Wazuh Dashboard      |
-|  (Kibana-like UI)       |
+|     (Web Interface)     |
 +-------------------------+
-
