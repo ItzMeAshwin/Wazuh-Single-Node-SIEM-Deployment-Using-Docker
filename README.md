@@ -235,7 +235,7 @@ Fix: Regenerate:
 ```bash
 docker compose -f generate-indexer-certs.yml run --rm generator
 ```
-### c4. High CPU usage / laptop freezing
+### 4. High CPU usage / laptop freezing
 
 Wazuh is heavy and can consume all cores.
 Fix:
