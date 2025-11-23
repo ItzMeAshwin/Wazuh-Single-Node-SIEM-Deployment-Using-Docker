@@ -207,6 +207,56 @@ These help show growth:
 - Build dashboards for threat hunting
 - Automated alert response (SOAR-like workflow)
 
+## 🚨 Troubleshooting & Common Issues Encountered During Setup
+
+During the setup of Wazuh Single-Node using Docker Desktop on Windows (WSL2 backend), several issues can occur. These are the exact problems we faced, why they happened, and how they were resolved. Adding this section to your project shows deep understanding and real-world troubleshooting skills.
+### 1. Docker / WSL2 not opening
+
+Wazuh used too much CPU and froze WSL2.
+Fix: Restart Windows or force-stop WSL2 using:
+```bash
+Stop-Service LxssManager -Force
+```
+
+After reboot, Docker works normally again.
+
+### 2. Dashboard not loading (ERR_CONNECTION_REFUSED)
+
+Solution: Use HTTPS, not HTTP.
+```bash
+https://localhost/
+```
+Accept the security warning.
+
+### 3. SSL certificate errors (Index or Dashboard failing)
+
+Cause: Missing/corrupted certs in wazuh_indexer_ssl_certs.
+Fix: Regenerate:
+```bash
+docker compose -f generate-indexer-certs.yml run --rm generator
+```
+### c4. High CPU usage / laptop freezing
+
+Wazuh is heavy and can consume all cores.
+Fix:
+```bash
+Limit WSL2 resources using .wslconfig
+```
+Inside the .wslconfig
+```bash
+[wsl2]
+processors=2
+memory=4GB
+Limit container CPU in docker-compose.yml:
+cpus: 1.5
+```
+### 5. Wrong container names for logs
+
+Use the full name shown in docker ps, e.g.:
+```bash
+docker logs single-node-wazuh.dashboard-1
+```
+
 ## Conclusion
 
 This project demonstrates a hands-on deployment of a complete SIEM solution using Wazuh. It showcases capabilities in:
