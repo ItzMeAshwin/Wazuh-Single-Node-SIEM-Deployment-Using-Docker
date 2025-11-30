@@ -6,11 +6,26 @@ It includes:
 - Wazuh Manager
 - Wazuh Indexer
 - Wazuh Dashboard
-- Filebeat
 - Windows Agent Integration
-- Log Collection
-- Alert Generation
-- Detection of brute-force and suspicious activities
+- File Integrity Monitoring (FIM)
+- Brute-force Detection
+- Suspicious Activity Detection
+
+## 📘 Table of Contents
+
+- Architecture
+- Prerequisites
+- Deployment Steps
+- Adding a Windows Agent
+- Testing Log Collection & Alerts
+- Screenshots
+- Project Structure
+- Key Features
+- Future Enhancements
+- Troubleshooting
+- Conclusion
+
+## ARCHITECTURE
 
 This project is part of my cybersecurity hands-on portfolio.
 ```text
@@ -56,19 +71,21 @@ Ensure the following are installed:
 
 > **Note:** Docker Compose is included with Docker Desktop.
 
-## 1. Clone the Stable Wazuh Deployment (v4.8.0)
+## DEPLOYMENT STEPS
+
+### 1. Clone the Stable Wazuh Deployment (v4.8.0)
 
 ```bash
 git clone -b v4.8.0 https://github.com/wazuh/wazuh-docker.git
 ```
 
-## 2. Navigate to the Single-Node Deployment
+### 2. Navigate to the Single-Node Deployment
 
 ```bash
 cd wazuh-docker/single-node
 ```
 
-## 3. Deploy Wazuh Using Docker Compose
+### 3. Deploy Wazuh Using Docker Compose
 
 ```bash
 docker compose up -d
@@ -83,7 +100,7 @@ This will automatically pull the images:
 
 Deployment time: 3–5 minutes
 
-## 4. Access Wazuh Dashboard
+### 4. Access Wazuh Dashboard
 
 ```bash
 https://localhost:5601
@@ -93,9 +110,9 @@ Username: admin
 Password: admin
 ```
 
-## 5. Adding a Windows Agent
+## Adding a Windows Agent
 
-### Step 1 — Download Windows Agent
+#### Step 1 — Download Windows Agent
 
 1. Open **Wazuh Dashboard**
 2. Go to **Agents → Deploy new agent**
@@ -104,7 +121,7 @@ Password: admin
    - Protocol: **TCP (default)**
 4. Click **Download MSI Installer**
 
-### Step 2 — Install Agent
+#### Step 2 — Install Agent
 
 1. Run the MSI installer  
 2. Enter:
@@ -112,13 +129,13 @@ Password: admin
    - **Enrollment password:** copy from dashboard  
 3. Finish installation
 
-### Step 3 — Approve the Agent
+#### Step 3 — Approve the Agent
 
 1. Open Wazuh Dashboard  
 2. Go to **Agents → Pending**  
 3. Click **Approve**
 
-## 6. Test Log Collection & Alerts
+## Test Log Collection & Alerts
 
 You should test and capture screenshots for your GitHub.
 
@@ -155,20 +172,34 @@ Expected Alert:
 - Script execution bypass
 - Potential malicious activity
 
-## 7. Screenshots to include in Repository
+## Screenshots to include in Repository
 
-Put them inside a folder named screenshots/.
+All screenshots related to the deployment, agent integration, and detections are stored in the screenshots/ folder.
 
-Recommended screenshots:
+You can preview them below:
 
-- Wazuh dashboard homepage
-- Agent connected
-- FIM alert
-- Brute-force attack alert
-- Logs in security events
-- Visualization dashboards
-
-## 8. Project File Structure
+#### Wazuh Dashboard
+```bash
+screenshot_s/dashboard.png
+```
+#### Connected Windows Agent
+```bash 
+screenshot_s/agent_connected.png
+```
+#### Brute Force Detection Alert
+```bash
+screenshot_s/brute_force_alert.png
+```
+#### File Integrity Monitoring Alerts
+```bash 
+screenshot_s/FIM -SS of FIM events
+screenshot_s/FIM - Threat hunting Dashboard
+```
+#### Event Logs in Threat Hunting
+```bash
+screenshots/threat_hunting_logs.png
+```
+## Project File Structure
 ```text
 Wazuh-SIEM-Project/
 │
@@ -185,7 +216,7 @@ Wazuh-SIEM-Project/
 └── logs/
 ```
 
-## 9. Key Features Demonstrated in This Project
+## Key Features Demonstrated in This Project
 
 - Centralized log management
 - Real-time threat detection
@@ -196,7 +227,7 @@ Wazuh-SIEM-Project/
 - Fully containerized SIEM deployment
 - Cloud-ready architecture
 
-## 10. Future Enhancements
+## Future Enhancements
 
 These help show growth:
 
